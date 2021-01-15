@@ -3,13 +3,16 @@ import '../components/Header.css';
 import logo from '../images/amazon_PNG25.png';
 import search from '../images/search.svg';
 import cart from '../images/cart.svg'
+import {Link} from "react-router-dom"
 
 
 
 function Header() {
     return (
         <div className='header'>
+            <Link to="/">
             <img className="header__logo" src={logo} alt="amazon"/>
+            </Link>
 
             <div className="header__search">
                 <input className="header__searchInput" type="text"/>
@@ -31,12 +34,14 @@ function Header() {
                     <span className="header__optionLineTwo">Prime</span>
                 </div>
 
+                <Link to="/checkout">
                 <div className="header__optionBasket">
                     <img className="header__cartIcon" src={cart} alt="cart"/>   
                      <span className="header__optionLineTwo header__basketCount">
                         0
                     </span>
                 </div>
+                </Link>
             </div>
         </div>
     )
