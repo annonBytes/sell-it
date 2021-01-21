@@ -27,8 +27,9 @@ export default function Subtotal() {
                   value={0}
                   displayType={"text"}
                   thousandSeperator={true}
-                  prefix={"£"}
+                  prefix={"$"}
             />
+            <button>Proceed to Checkout</button>
         </div>
     )
 }
