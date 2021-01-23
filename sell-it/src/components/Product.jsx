@@ -2,6 +2,11 @@ import React from "react";
 import "../components/Product.css";
 
 function Product({ title, image, price, rating }) {
+
+  const addToBasket = () => {
+    //Test
+  }
+
   return (
     <div className="product">
       <div className="product__info">
@@ -20,8 +25,8 @@ function Product({ title, image, price, rating }) {
       </div>
 
       <img src={image} alt="The Lean Startup" />
-
-      <button>Add to Basket</button>
+ 
+      <button onClick={addToBasket}>Add to Basket</button>
     </div>
   );
 }

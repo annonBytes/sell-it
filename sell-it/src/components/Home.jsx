@@ -51,7 +51,7 @@ function Home() {
                   Windows 10 in S Mode, A515-43-R19L, Silver"
             price={364.99}
             image="https://images-na.ssl-images-amazon.com/images/I/71vvXGmdKWL._AC_SL1500_.jpg"
-            rating={5} 
+            rating={5}  
           />
         </div>
 
