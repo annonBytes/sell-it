@@ -4,10 +4,14 @@ import logo from '../images/amazon_PNG25.png';
 import search from '../images/search.svg';
 import cart from '../images/cart.svg'
 import {Link} from "react-router-dom"
+import { useStateValue } from '../StateProvider';
 
 
 
 function Header() {
+
+const [{ basket }] = useStateValue();
+
     return (
         <div className='header'>
             <Link to="/">
@@ -38,7 +42,7 @@ function Header() {
                 <div className="header__optionBasket">
                     <img className="header__cartIcon" src={cart} alt="cart"/>   
                      <span className="header__optionLineTwo header__basketCount">
-                        0
+                       {basket?.length}
                     </span>
                 </div>
                 </Link>
