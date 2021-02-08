@@ -6,7 +6,7 @@ import Subtotal from './Subtotal'
 
 export default function Checkout() {
 
-    const [{basket}, dispatch] = useStateValue();
+    const [{basket}] = useStateValue();
 
     return (
         <div className="checkout">
