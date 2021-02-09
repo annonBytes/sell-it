@@ -11,7 +11,7 @@ import { auth } from '../firebase';
 
 function Header( ) {
 
-const [{ basket, user }] = useStateValue();
+const [{ basket, user }, dispatch] = useStateValue();
 
 const handleAuthentication = () => {
   if (user) {
@@ -29,9 +29,9 @@ const handleAuthentication = () => {
                 <img className="header__searchIcon" src={search} alt="search"/>
             </div>
 
-            <div className="header__nav" onClick={handleAuthentication}>
+            <div className="header__nav">
                 <Link to={ !user && "/login"}>
-                    <div className="header__option">
+                    <div className="header__option" onClick={ handleAuthentication }>
                         <span className="header__optionLineOne">Hello{!user ? "Guest": user.email}</span>
                         <span className="header__optionLineTwo">{user ? "Sign out" : "Sign in"}</span>
                     </div>

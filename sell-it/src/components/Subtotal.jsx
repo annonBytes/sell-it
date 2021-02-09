@@ -16,8 +16,6 @@ const [{ basket }] = useStateValue();
                   (value) => (
                       <>
                          <p>
-                             {/* Subtotal({basket.length} items): */}
-                             {/* <strong>{` ${value}`}</strong> */}
                             Subtotal({ basket?.length } item(s)): 
                             <strong>{` ${value}`}</strong> 
                          </p>
