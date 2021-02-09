@@ -11,6 +11,7 @@ const reducer = (state, action) => {
     console.log(action);
 
    switch(action.type){
+
        case 'ADD_TO_BASKET':
            return {
                ...state,
@@ -37,6 +38,12 @@ const reducer = (state, action) => {
                ...state,
                basket: newBasket
            };
+
+           case "SET_USER": 
+            return {
+                ...state,
+                user: action.user
+            }
 
         default:
             return state;
