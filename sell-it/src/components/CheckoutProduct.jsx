@@ -1,6 +1,7 @@
 import React from 'react';
 import '../components/CheckoutProduct.css';
 import { useStateValue } from '../StateProvider';
+import FlipMove from 'react-flip-move';
 
 function CheckoutProduct({id, image, title, price, rating}) {
 
@@ -14,6 +15,7 @@ function CheckoutProduct({id, image, title, price, rating}) {
     }
 
     return (
+        <FlipMove>
         <div className="checkoutProduct">
             <img className="checkoutProduct__image" src={image} alt=""/>
 
@@ -38,6 +40,7 @@ function CheckoutProduct({id, image, title, price, rating}) {
             </div>
 
         </div>
+        </FlipMove>
     )
 }
 
