@@ -1,15 +1,17 @@
 import { useElements, useStripe, CardElement } from '@stripe/react-stripe-js';
 import {React, useState, useEffect} from 'react'
 import CurrencyFormat from 'react-currency-format';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import '../components/Payment.css';
 import { getBasketTotal } from '../reducer';
 import { useStateValue } from '../StateProvider';
 import CheckoutProduct from './CheckoutProduct';
+import axios from '../axios';
 
 function Payment() {
 
     const [{basket, user}, dispatch] = useStateValue();
+    const history = useHistory();
 
     const [error, setError] = useState(null);
     const [disabled, setDisabled] = useState(true);
@@ -32,6 +34,8 @@ function Payment() {
         }
         getClientSecret();
     }, [basket])
+
+    console.log('The secret is >>>', clientSecret);
 
     const handleSubmit = async (e) => {
        e.preventDefault();
