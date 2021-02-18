@@ -36,11 +36,14 @@ const handleAuthentication = () => {
                         <span className="header__optionLineTwo">{user ? "Sign out" : "Sign in"}</span>
                     </div>
                 </Link>
-
-                <div className="header__option">
-                    <span className="header__optionLineOne">Returns</span>
-                    <span className="header__optionLineTwo">& Orders</span>
-                </div>
+                 
+                 <Link to="/orders">
+                    <div className="header__option">
+                        <span className="header__optionLineOne">Returns</span>
+                        <span className="header__optionLineTwo">& Orders</span>
+                    </div>
+                </Link>
+                
                 <div className="header__option">
                     <span className="header__optionLineOne">Your</span>
                     <span className="header__optionLineTwo">Prime</span>

@@ -7,6 +7,7 @@ import { getBasketTotal } from '../reducer';
 import { useStateValue } from '../StateProvider';
 import CheckoutProduct from './CheckoutProduct';
 import axios from '../axios';
+import { db } from '../firebase';
 
 function Payment() {
 
@@ -27,7 +28,7 @@ function Payment() {
         const getClientSecret = async() => {
             const res = await axios({
                 method: 'post',
-                //stripe exxpects the total in a currency subunit(here it is in cents)
+                //stripe expects the total in a currency subunit(here it is in cents)
                 url: `/payments/create?total=${getBasketTotal(basket) * 100}`
             });
             setClientSecret(res.data.clientSecret)
@@ -42,16 +43,32 @@ function Payment() {
        setProcessing(true);
 
        const payload = await stripe.confirmCardPayment(clientSecret, 
-        {payment_method:
+        { payment_method:
         {
              card: elements.getElement(CardElement)
         }
     }).then(({ paymentIntent }) => {
+
+        db
+            .collection('users')
+            .doc(user?.id)
+            .collection('orders')
+            .doc(paymentIntent.id)
+            .set({
+                basket: basket,
+                amount: paymentIntent.amount,
+                created: paymentIntent.created
+            })
+
         setSucceeded(true);
         setError(null);
         setProcessing(false);
 
-        history.replaceState('/orders');
+        dispatch({
+            type: 'EMPTY_BASKET'
+        })
+
+        history.replace('/orders');
     })
     }
 
